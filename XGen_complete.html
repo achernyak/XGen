@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<script>
+			/*jslint browser: true */
+			/*global loadXMLDoc*/
+
+			 //allow the loading of an XML file to be parsed
+			function loadXMLDoc(dname) {
+				'use strict';
+				var xhttp;
+				//option for IE
+				if (window.XMLHttpRequest) {
+					xhttp = new XMLHttpRequest();
+				} else {
+					xhttp = new window.ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xhttp.open("GET", dname, false);
+				xhttp.send(null);
+				return xhttp.responseXML;
+			}
+
+			 //appends element and xpath to a table
+
+			function tableAppend(table, elem, xpath) {
+				'use strict';
+				var row, cell1, cell2;
+				row = table.insertRow(-1);
+				cell1 = row.insertCell(0);
+				cell2 = row.insertCell(1);
+				cell1.innerHTML = elem;
+				cell2.innerHTML = xpath;
+			}
+
+			 //gets xpath and writes unique xpath values
+
+			function getXpath() {
+				'use strict';
+				var table, xmlDoc, elems, elem, out, i, a, list = [],
+					attribute;
+				table = document.getElementById('table');
+				xmlDoc = loadXMLDoc(document.getElementById('file').value);
+				elems = xmlDoc.getElementsByTagName('*');
+				//loops through all the elements
+				for (i = 0; i < elems.length; i += 1) {
+					elem = elems[i];
+					out = elem.nodeName;
+					//loops through all the parent nodes of an element creating an xpath
+					while (elem.parentNode) {
+						out = elem.parentNode.nodeName + '/' + out;
+						elem = elem.parentNode;
+					}
+					// trims out the #Document element present in every xml file
+					out = out.substr(9);
+					//checks if xpath was loaded to the page, if not writes the xpath to the page
+					if (list.indexOf(out) === -1) {
+						list.push(out);
+						tableAppend(table, elems[i].nodeName, out);
+						//checks if the element has any attributes, and writes all attributes to the page
+						if (elems[i].attributes.length !== 0) {
+							for (a = 0; a < elems[i].attributes.length; a += 1) {
+								attribute = elems[i].attributes[a].nodeName;
+								tableAppend(table, attribute, out + '/@' + attribute);
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type='file' name='file' id='file' onchange="getXpath()">
+		<table id='table'>
+			<tr id='title'>
+				<td>Element</td>
+				<td>X-Path</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

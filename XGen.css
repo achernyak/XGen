@@ -1,0 +1,143 @@
+html, body{
+	height:100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: rgb(232, 226, 183);
+	font-family: 'Arial', sans-serif;
+	font-size: 13px;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+}
+
+/* CONTAINER */
+
+.container{
+	overflow: hidden;
+	background: rgb(0, 81, 47);
+	
+}
+
+/* HEADER */
+
+.header {
+	height: 150px;
+	width: 1100px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.logo{
+	float: left;
+}
+
+.logo a{
+	display: block;
+	line-height: 120px;
+	text-decoration: none;
+	font-family: cursive;
+	font-size: 40px;
+	color: rgb(255, 207, 1);
+}
+
+/* Menu */
+
+.menu{
+	float: right;
+}
+
+.menu ul{
+	float: right;
+	margin: 0;
+	padding: 60px 0 0 0;
+	list-style: none;
+	line-height: normal;
+}
+
+.menu li{
+	float: left;
+	margin-left: 10px;
+}
+
+.menu a{
+	display: block;
+	padding: 10px 20px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	color: rgb(255, 207, 1);
+}
+
+.menu .active a{
+	background: rgb(121, 26, 0);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.menu .active a:hover{
+	background: rgb(179, 25, 23);
+	color: rgb(255, 207, 1); 
+}
+
+.menu a:hover{
+	 color: rgb(179, 25, 23);
+}
+
+/* Page */
+.page_container {
+	overflow: hidden;	
+	padding: 50px 0;
+	margin: 0 auto;
+	border-top: 1px solid #E7E7E7;
+}
+
+.page {
+	display: block;
+	margin: 10px auto 10px;
+	width: 1100px;
+	letter-spacing: 1px;
+	font-size: 15px;
+	font-weight: 200;
+	color: rgb(121, 26, 0);
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 300;
+	background-color: rgb(206, 112, 25);
+}
+
+table {
+	width: 100%;
+	border-collapse: separate;
+}
+
+td {
+	padding: 5px;
+}
+
+/* Footer */
+
+.footer {
+	width: 1100px;
+	color: rgb(255, 207, 1);
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.footer-container{
+	overflow: hidden;
+	background: rgb(0, 81, 47);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
